@@ -1,0 +1,13 @@
+{
+  "name": "demo-nodejs-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "program.js",
+  "scripts": {
+    "prestart": "tsc",
+    "start": "node ./dist/program.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
