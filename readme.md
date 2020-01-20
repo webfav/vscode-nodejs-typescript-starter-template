@@ -10,8 +10,22 @@ npm init --yes
 tsc --init
 ```
 
-# How to run 
+## How to run 
 
 ```powershell
 npm run start
 ```
+
+## How to install gitignore ? 
+
+```powershell
+scoop home gitignore
+scoop install gitignore
+
+gitignore csharp  
+gitignore node
+gitignore windows
+
+gitignore node >> .gitignore
+```
+
