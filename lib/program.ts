@@ -1,24 +1,25 @@
-// npm install node-fetch
-// npm install @types/node-fetch
-
 import fetch from 'node-fetch'
 
-const address = "https://superusers-api-service-2020.azurewebsites.net/weather"
-let city      = "copenhagen"
+class Weather {
+    city:string
 
-let url = `${address}/${city}`
+    url = "https://superusers-api-service-2020.azurewebsites.net/weather"
 
-let temp:number 
-
-
-// C:\dev\vscode-nodejs-typescript-hello-world\node_modules\@types\node-fetch\index.d.ts
-fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        //console.log(data)
-        temp = data.CurrentData.temperature   
-        console.log(`The Temperatur in ${city} is today ${temp} `)
-        //The Temperatur in copenhagen is today 16
-    })
+    constructor(cityName:string = "copenhagen") {
+        this.city = cityName
+    }
     
+    getWeather(onSuccess:any, onError?:any) {
+        const url:string = `${this.url}/${this.city}`
+        fetch(url)
+            .then(response  => response.json())
+            .then(data      => onSuccess(data))
+            .catch(reason   => onError(reason) )
+    }
+}
 
+let input = process.argv[2] || 'Odense'
+
+let obj = new Weather( input )
+
+obj.getWeather(  (data:any) => {console.log(data)} , (problem:any) => console.error(problem))
